@@ -43,6 +43,11 @@
       from {opacity:0;transform:scale(0.95)}
       to {opacity:1;transform:scale(1)}
     }
+
+  .responsive-image {
+    max-width: 100%; /* Image will shrink but not grow past its original size */
+    height: auto;    /* Maintains the aspect ratio */
+}
   </style>
 </head>
 <body>
@@ -82,7 +87,7 @@
     function reveal(el, imgPath) {
       if (el.classList.contains('revealed')) return;
       el.classList.add('revealed');
-      el.innerHTML = `<img src="${imgPath}" alt="Gift image" />`;
+      el.innerHTML = `<img class="responsive-image" src="${imgPath}" alt="Gift image" />`;
       const img = el.querySelector('img');
       img.style.display = 'block';
       img.style.animation = 'fadeIn 0.6s ease forwards';
