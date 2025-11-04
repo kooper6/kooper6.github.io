@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday Olha!</title>
+  <style>
+    :root{
+      --bg:#f8f6ff;
+      --card:#fff;
+      --accent:#ff6bcb;
+      --muted:#8b8aa6;
+    }
+    html,body{height:100%;margin:0;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background: linear-gradient(180deg, #fff 0%, var(--bg) 100%);}
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:24px}
+
+    /* phone mockup */
+    .phone{width:375px;max-width:92vw;border-radius:44px;padding:18px;background:linear-gradient(180deg,#fff,#f3f3ff);box-shadow:0 18px 40px rgba(20,20,60,0.15);border:1px solid rgba(20,20,60,0.04)}
+    .notch{height:30px;width:60%;margin:0 auto;border-radius:12px;background:linear-gradient(180deg,#0d0d0d,#222);opacity:0.08}
+    .screen{background:var(--card);border-radius:28px;padding:18px;overflow:hidden}
+
+    header{display:flex;align-items:center;gap:12px}
+    .gift{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),#ffd36b);box-shadow:0 6px 18px rgba(255,107,203,0.18);font-size:28px}
+    h1{margin:0;font-size:20px;color:#2b2545}
+    p.lead{margin:6px 0 12px;color:var(--muted);font-size:13px}
+
+    .screens{display:flex;gap:10px;justify-content:center;margin-top:6px}
+    .screenshot{width:100px;height:180px;border-radius:16px;border:6px solid #1111;box-shadow:0 6px 18px rgba(30,30,60,0.09);overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .screenshot img{width:100%;height:100%;object-fit:cover;display:block}
+
+    .confetti{height:62px;margin-top:12px;display:flex;gap:6px;justify-content:center}
+    .confetti i{font-style:normal;font-size:18px;transform:rotate(-12deg)}
+
+    .message{margin-top:14px;padding:12px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbf8ff);text-align:center}
+    .message h2{margin:0;font-size:18px;color:var(--accent)}
+    .message p{margin:8px 0 0;color:var(--muted);font-size:14px}
+
+    footer{font-size:11px;color:#aaa;text-align:center;margin-top:10px}
+
+    /* small screens tweak */
+    @media(max-width:420px){.phone{width:92vw}}
+
+    /* accessibility: reduce motion */
+    @media (prefers-reduced-motion: no-preference){
+      .gift{animation:pop 1.8s ease-in-out infinite}
+    }
+    @keyframes pop{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  </style>
+</head>
+<body>
+  <!--
+    Instructions:
+    - This single HTML file is ready to be published to GitHub Pages. Save as index.html in your repo root or in /docs and enable Pages.
+    - Replace the three placeholder screenshots below with your actual images. See the <img> tags with ids screenshot1/2/3.
+  -->
+  <div class="wrap">
+    <div class="phone" role="region" aria-label="Birthday gift for Olha">
+      <div class="notch"></div>
+      <div class="screen">
+        <header>
+          <div class="gift" aria-hidden>🎁</div>
+          <div>
+            <h1>Happy Birthday Olha!</h1>
+            <p class="lead">A little gift site made just for you — swipe through the screenshots.</p>
+          </div>
+        </header>
+
+        <div class="screens" aria-hidden>
+          <!-- Placeholder SVGs embedded as data URIs so the file works standalone. Replace src with your images. -->
+          <div class="screenshot">
+            <img id="screenshot1" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='700'><rect width='100%' height='100%' fill='%23ffdfe9'/><text x='50%' y='50%' font-size='28' font-family='Arial' fill='%23333' text-anchor='middle'>Screenshot%201</text></svg>" alt="Screenshot 1"/>
+          </div>
+          <div class="screenshot">
+            <img id="screenshot2" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='700'><rect width='100%' height='100%' fill='%23fff1d6'/><text x='50%' y='50%' font-size='28' font-family='Arial' fill='%23333' text-anchor='middle'>Screenshot%202</text></svg>" alt="Screenshot 2"/>
+          </div>
+          <div class="screenshot">
+            <img id="screenshot3" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='700'><rect width='100%' height='100%' fill='%23e8f7ff'/><text x='50%' y='50%' font-size='28' font-family='Arial' fill='%23333' text-anchor='middle'>Screenshot%203</text></svg>" alt="Screenshot 3"/>
+          </div>
+        </div>
+
+        <div class="confetti" aria-hidden>
+          <i>✨ 🎉 🎈 🎊 ✨</i>
+        </div>
+
+        <div class="message" role="article">
+          <h2>For Olha — make a wish!</h2>
+          <p>Open this page on your iPhone for the best fit. Want animation, music, or a download button? I can add it.</p>
+        </div>
+
+        <footer>Made with ❤️ — GitHub Pages ready</footer>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Small helper: if you upload real images named screenshot1.jpg/png etc to the repo,
+    // this will try to load them (so you don't have to edit the HTML).
+    ['png','jpg','jpeg','webp'].forEach(ext=>{
+      [1,2,3].forEach(i=>{
+        const el=document.getElementById('screenshot'+i);
+        if(!el) return;
+        const tryPath='images/screenshot'+i+'.'+ext; // place images in /images/
+        fetch(tryPath,{method:'HEAD'}).then(r=>{if(r.ok) el.src=tryPath}).catch(()=>{});
+      })
+    })
+  </script>
+</body>
+</html>
+
